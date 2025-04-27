@@ -19,7 +19,7 @@ class TaskOwnership
     {
         $task = Task::find($request->route("id"));
 
-        if (Auth::id() != $task->user_id) return redirect()->route("task.index.view");
+        if (!$task || Auth::id() != $task->user_id) return redirect()->route("task.index.view");
         return $next($request);
     }
 }

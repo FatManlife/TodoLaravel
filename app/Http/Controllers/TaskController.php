@@ -100,9 +100,7 @@ class TaskController extends Controller
     {
         $task = Task::find($req->id);
 
-        if (!$task) return redirect()->route("task.index.view");
 
-        if ($task->user_id != Auth::user()->id) return redirect()->route("task.show.view", $task->id);
 
         $validate = $req->validate(
             [
@@ -126,10 +124,6 @@ class TaskController extends Controller
     public function destroy(string $id)
     {
         $task = Task::find($id);
-
-        if (!$task) return redirect()->route("task.index.view");
-
-        if ($task->user_id != Auth::user()->id) return redirect()->route("task.show.view", $task->id);
 
         Task::destroy($id);
 
