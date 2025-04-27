@@ -6,7 +6,7 @@
             </div>
             <div class="card bg-base-100  w-full max-w-xl  shrink-0 shadow-2xl mt-3">
                 <div class="card-body">
-                    <form method="POST" action="{{ route('task.edit.action') }}">
+                    <form method="POST" action="{{ route('task.edit.action', $task->id) }}">
                         @method('PUT')
                         @csrf
                         <fieldset class="fieldset">
